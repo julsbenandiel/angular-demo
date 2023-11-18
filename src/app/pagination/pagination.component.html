@@ -1,0 +1,10 @@
+<div class="flex gap-x-3 mt-3">
+  <button
+    [ngClass]="(page + 1) === pageIndex ? 'bg-blue-500 text-white' : '' "
+    class="border px-3 py-1"
+    *ngFor="let page of pages"
+    (click)="handlePageChange(page + 1)"
+    type="button">
+    <span>{{ page + 1 }}</span>
+  </button>
+</div>

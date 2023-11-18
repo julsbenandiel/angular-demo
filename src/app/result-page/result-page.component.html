@@ -1,0 +1,67 @@
+<div class="container px-10 mx-auto">
+  <p class="font-semibold text-lg">Filter</p>
+
+  <form 
+    [formGroup]="reactiveForm"
+    class="flex items-center justify-start gap-x-5 mt-3 mb-8">
+
+    <select
+      formControlName="category"
+      class="border w-full max-w-xs px-2 h-10 shadow-lg shadow-gray-200 rounded-md">
+      <option selected disabled value="">Category</option>
+      <option 
+        *ngFor="let category of categories"
+        [value]="category">{{category | titlecase }}</option>
+    </select>
+
+    <select 
+      formControlName="brand"
+      class="border w-full max-w-xs px-2 h-10 shadow-lg shadow-gray-200 rounded-md">
+      <option selected disabled value="">Brand</option>
+      <option 
+        *ngFor="let brand of brands"
+        [value]="brand">{{brand | titlecase }}</option>
+    </select>
+
+    <!-- (change)="handleSortChange($event)" -->
+    <select 
+      formControlName="sort"
+      class="border w-full max-w-xs px-2 h-10 shadow-lg shadow-gray-200 rounded-md">
+      <option selected disabled value="">Sort</option>
+      <option value="price:-1">Price (Highest - Lowest)</option>
+      <option value="price:1">Price (Lowest - Highest)</option>
+    </select>
+
+    <button 
+      class="rounded px-4 h-9 text-white font-semibold bg-blue-500"
+      (click)="clearFilters()"
+      type="button">
+      Clear Filters
+    </button>
+  </form>
+
+  <p class="font-semibold text-lg mb-2">Products: {{ metadata.total }}</p>
+  <div 
+    *ngIf="!loading"
+    class="grid grid-cols-12 gap-5">
+    <div 
+      *ngFor="let product of products"
+      class="xl:col-span-2">
+      <app-product-item 
+        [product]="product">
+      </app-product-item>
+    </div>
+  </div>
+  <div *ngIf="loading">Loading...</div>
+
+  <div 
+    *ngIf="!loading"
+    class="mt-5">
+    <hr>
+    <app-pagination
+      (setPageIndex)="setPageIndex($event)"
+      [pageIndex]="reactiveForm.get('page')?.value"
+      [pageCount]="metadata.pageCount"
+      [total]="metadata.total"></app-pagination>
+  </div>
+</div>

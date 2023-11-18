@@ -1,0 +1,19 @@
+<div class="shadow-lg rounded overflow-hidden">
+  <div class="w-full h-[160px] relative">
+    <img 
+      class="object-cover absolute"
+      [alt]="product.gtin"
+      [src]="product.image" />
+    <div class="flex flex-col gap-y-2 mb-3 absolute top-3 z-10 px-3 w-full">
+      <p class="truncate w-fit text-[13px] bg-slate-100 rounded-full font-medium px-3 shadow">{{ product.category }}</p>
+      <p class="truncate w-fit text-[13px] bg-blue-400 text-white shadow rounded-full font-medium px-2">{{ product.brandName }}</p>
+      <p class="truncate w-fit text-[13px] bg-orange-400 text-white shadow rounded-full font-medium px-2">{{ product.stock }}pcs</p>
+    </div>
+  </div>
+
+  <div class="p-3 bg-white">
+    <p class="truncate font-medium mt-2">{{ product.name }}</p>
+    <p class="text-xl font-medium">{{ product.price | currency }}</p>
+  </div>
+
+</div>
