@@ -1,4 +1,5 @@
 export interface Product {
+  _id: string;
   gtin: String;
   brandName: String;
   stock: String;
