@@ -3,11 +3,11 @@
 
   <form 
     [formGroup]="reactiveForm"
-    class="flex items-center justify-start gap-x-5 mt-3 mb-8">
+    class="flex items-center flex-col sm:flex-row justify-start gap-y-2 gap-x-5 mt-3 mb-8">
 
     <select
       formControlName="category"
-      class="border w-full max-w-xs px-2 h-10 shadow-lg shadow-gray-200 rounded-md">
+      class="border w-full lg:w-[200px] px-2 h-10 shadow-lg shadow-gray-200 rounded-md">
       <option selected disabled value="">Category</option>
       <option 
         *ngFor="let category of categories"
@@ -16,7 +16,7 @@
 
     <select 
       formControlName="brand"
-      class="border w-full max-w-xs px-2 h-10 shadow-lg shadow-gray-200 rounded-md">
+      class="border w-full lg:w-[200px] px-2 h-10 shadow-lg shadow-gray-200 rounded-md">
       <option selected disabled value="">Brand</option>
       <option 
         *ngFor="let brand of brands"
@@ -26,14 +26,14 @@
     <!-- (change)="handleSortChange($event)" -->
     <select 
       formControlName="sort"
-      class="border w-full max-w-xs px-2 h-10 shadow-lg shadow-gray-200 rounded-md">
+      class="border w-full lg:w-[220px] px-2 h-10 shadow-lg shadow-gray-200 rounded-md">
       <option selected disabled value="">Sort</option>
       <option value="price:-1">Price (Highest - Lowest)</option>
       <option value="price:1">Price (Lowest - Highest)</option>
     </select>
 
     <button 
-      class="rounded px-4 h-9 text-white font-semibold bg-blue-500"
+      class="rounded px-4 h-9 text-white font-semibold bg-blue-500 w-full lg:w-fit"
       (click)="clearFilters()"
       type="button">
       Clear Filters
@@ -46,7 +46,7 @@
     class="grid grid-cols-12 gap-5">
     <div 
       *ngFor="let product of products"
-      class="xl:col-span-2">
+      class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 xl:col-span-2">
       <app-product-item 
         [product]="product">
       </app-product-item>
